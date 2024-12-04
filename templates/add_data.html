@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student - Student Performance Marks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #333;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 15px;
+            background-color: #4CAF50;
+            border-radius: 4px;
+        }
+        nav a:hover {
+            background-color: #45a049;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Add Student - Student Performance Marks</h1>
+    </header>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/marks">View Marks</a>
+        <a href="/help">Help</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+    <div class="container">
+        <h2>Enter Student Details</h2>
+
+        <!-- Error message (if any) -->
+        <div class="error-message" id="error-message">
+            <!-- Error message will be inserted here dynamically -->
+        </div>
+
+        <form id="addStudentForm" method="POST">
+            <label for="studentName">Student Name</label>
+            <input type="text" id="studentName" name="studentName" placeholder="Enter student's name" required><br>
+
+            <label for="marks">Marks</label>
+            <input type="number" id="marks" name="marks" placeholder="Enter student's marks" required><br>
+
+            <button type="submit">Add Student</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Student Performance App | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Handling the form submission
+        document.getElementById('addStudentForm').addEventListener('submit', function(e) {
+            e.preventDefault();  // Prevent page reload
+
+            // Get values of form inputs
+            var studentName = document.getElementById('studentName').value;
+            var marks = document.getElementById('marks').value;
+
+            // Validate the form inputs
+            if (!studentName || !marks || marks < 0 || marks > 100) {
+                // Display an error message if the form is invalid
+                document.getElementById('error-message').textContent = "Please enter a valid student name and marks between 0 and 100.";
+                return;
+            }
+
+            // Normally here, you'd send the data to the server to store the new student record
+            // Example: using fetch() or an AJAX request (replace with your own logic)
+
+            console.log("Student Name: " + studentName);
+            console.log("Marks: " + marks);
+
+            // Simulate success response
+            setTimeout(function() {
+                alert("Student added successfully!");
+                document.getElementById('addStudentForm').reset(); // Reset the form after submission
+            }, 500);
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Student Performance Marks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .forgot-password {
+            display: block;
+            text-align: right;
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px;
+        }
+        .forgot-password:hover {
+            text-decoration: underline;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login to Student Performance</h2>
+
+        <!-- Error message (if any) -->
+        <div class="error-message" id="error-message">
+            <!-- Error message will be inserted here dynamically -->
+        </div>
+
+        <form id="loginForm" method="POST">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required><br>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required><br>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <a href="#" class="forgot-password">Forgot your password?</a>
+    </div>
+
+    <script>
+        // Handling the login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();  // Prevent page reload
+
+            // Getting the values of the form inputs
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Check if the username and password are correct (this would be replaced by real backend validation)
+            if (username === "admin" && password === "password123") {
+                window.location.href = "/dashboard";  // Redirect to the dashboard (replace with actual URL)
+            } else {
+                // Display error message if login fails
+                document.getElementById('error-message').textContent = "Invalid username or password. Please try again.";
+            }
+        });
+    </script>
+
+</body>
+</html>
